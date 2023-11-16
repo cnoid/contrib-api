@@ -1,8 +1,8 @@
 import fetch from 'node-fetch';
 
-const TOKEN = process.env.GITHUB_TOKEN; // Set your token in .env.local
+const TOKEN = process.env.GITHUB_TOKEN; // Remember to put your Github token in .env.local before running
 
-// Github API Response
+// GraphQL
 type GitHubApiResponse = {
   user: {
     contributionsCollection: {
@@ -19,7 +19,6 @@ type GitHubApiResponse = {
   }
 };
 
-// JSON Formatting
 type TransformedData = {
   count: number;
   month: string;
@@ -27,8 +26,7 @@ type TransformedData = {
   level: number;
 };
 
-
-// Data fetching from github API
+// Fetch data
 async function fetchGitHubData(userName: string): Promise<GitHubApiResponse> {
   const query = `
     query($userName:String!) {
@@ -69,8 +67,7 @@ async function fetchGitHubData(userName: string): Promise<GitHubApiResponse> {
   return data.data;
 }
 
-
-// More data formatting, change as you need
+// Transform into JSON
 function transformGitHubData(data: GitHubApiResponse): TransformedData[] {
   const result: TransformedData[] = [];
 
@@ -89,7 +86,7 @@ function transformGitHubData(data: GitHubApiResponse): TransformedData[] {
   return result;
 }
 
-// Helper function to return the ordinal suffix for a day
+// Day translate
 function getOrdinalSuffix(day: number): string {
   const j = day % 10,
         k = day % 100;
@@ -105,17 +102,16 @@ function getOrdinalSuffix(day: number): string {
   return "th";
 }
 
-// Determine the contribution level
+// Activity level
 function determineLevel(count: number): number {
   if (count === 0) return 0;
   if (count < 5) return 1;
   if (count < 10) return 2;
   if (count < 20) return 3; 
-  return 4; 
+  return 4; // Level 4 for counts of 20 and above
 }
 
-
-// Main function to retrieve and transform GitHub contribution data
+// JSON export
 export async function retrieveContributionData(userName: string): Promise<TransformedData[]> {
   const fetchedData = await fetchGitHubData(userName);
   const transformedData = transformGitHubData(fetchedData);
