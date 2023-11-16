@@ -6,13 +6,31 @@ Usage:
 
 
 Edit the file `.env.local` with your [Github token](https://github.com/settings/tokens). You only need user: `read:user`.
+#### Docker (safe)
 
+<details>
+  <summary>Expand</summary>
+  
 `docker build -t githubcontribapi .`
 
 `docker run -d --restart unless-stopped -p 3000:3000 githubcontribapi`
 
 `http://yourip:3000/api/contrib?userName=yourusername`
 
+</details>
+
+#### Node.js
+
+<details>
+  <summary>Expand</summary>
+  Requires Node.js 16
+
+  `npm i`
+  
+  `npm run dev --host`
+
+  `http://yourip:3000/api/contrib?userName=yourusername`
+  </details>
 
 This just prints out a JSON format, [which can be used with SvelteKit for example](https://github.com/cnoid/svelte-github-contrib).
 
