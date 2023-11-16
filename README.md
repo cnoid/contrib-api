@@ -1,5 +1,5 @@
 # contrib-api
-Node.js Github Contribution API
+Github Contribution API (GraphQL)
 
 
 Usage:
