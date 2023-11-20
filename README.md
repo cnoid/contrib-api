@@ -6,7 +6,7 @@ Usage:
 
 
 Edit the file `.env.local` with your [Github token](https://github.com/settings/tokens). You only need user: `read:user`.
-#### Docker (safe)
+#### Docker (easiest)
 
 <details>
   <summary>Expand</summary>
