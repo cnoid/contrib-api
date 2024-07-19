@@ -1,11 +1,9 @@
 import os
 import httpx
 from typing import List, Dict
-from memory_profiler import profile
 
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 
-@profile
 async def fetch_github_data(user_name: str) -> dict:
     query = """
     query($userName:String!) {
