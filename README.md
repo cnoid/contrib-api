@@ -1,12 +1,10 @@
-# contrib-api
-Github Contribution API (GraphQL)
+# Github Contributions APII
 
+This lil' server reformats GraphQL from Github into a bit more commonly usable JSON format. Example with SvelteKit at the bottom.
 
-Usage:
-
+## Usage:
 
 Edit the file `.env.local` with your [Github token](https://github.com/settings/tokens). You only need user: `read:user`.
-
 
 ## FastAPI/Python
 
@@ -100,7 +98,7 @@ It should be noted that this is not updated due to migration to FastAPI.
   `node serve`
 
   `http://yourip/api/contrib?userName=yourusername`
-  </details>
+</details>
 
 This just prints out a JSON format, [which can be used with SvelteKit for example](https://github.com/cnoid/svelte-github-contrib).
 
