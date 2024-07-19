@@ -67,6 +67,13 @@ CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80", "--workers"
 ```
 </details>
 
+- Download the files
+- Edit your `.env.local`
+- Build the image `docker build -t github-contributions-api .`
+- Run the container
+  - Exposed: `docker run -d --name github-contributions-api -p 8001:80 github-contributions-api`
+  - Network: `docker run -d --name github-contributions-api --network nginx github-contributions-api`
+- Check it's pulling data `http://youripordomain:yourport/api/contrib?userName=yourgithubuser`
 
 ## React/NodeJS
 
